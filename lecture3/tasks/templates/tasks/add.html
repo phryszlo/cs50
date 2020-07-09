@@ -4,9 +4,13 @@
   <h2>add a new task</h2>
   <form action="{% url 'tasks:add' %} " method="post">
     {% csrf_token %}
-    {{ form }}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <br />
     <input type="submit">
   </form>
+  <br />
   <a href="{% url 'tasks:index' %}">View tasks</a>
 </div>
 <div>

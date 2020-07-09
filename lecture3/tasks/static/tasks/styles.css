@@ -1,9 +1,17 @@
+ul {
+  margin-left: 2px;
+}
+
 li {
   font-family: sans-serif;
-  font-size: 90px;
-  text-align: center;
+  font-size: 20px;
   color:lime;
-  list-style: none;
+  list-style-type: lower-roman;
+
+  list-style-position: inside;
+  padding-left: 1em;
+  border: 1px solid steelblue;
+  width: 18em;
 }
 
 p {
@@ -12,13 +20,45 @@ p {
   color: yellowgreen;
 }
 
+a:visited {
+  color: lightblue;
+}
+
 div {
   border: solid 1px yellow;
-  padding: 4px;
-  margin: 5px;
+  padding: 10px;
+  /* margin: 9px; */
+  text-align: left;
+  width: 70%;
+}
+
+table {
+  text-align: justify;
+  padding: 15px;
+}
+
+td, th {
+  padding: 10px;
+  border: solid 1px gray;
+}
+
+input  {
+  width: 10em;
+  border-radius: .5em;
 }
 
 body {
-  background-color: green;
+  background-color: #281828;
   display: flex;
+  flex-flow: column wrap;
+  color: whitesmoke;
 }
+
+.tasktitle {
+  margin: 20px;
+}
+
+.addlink {
+  margin: auto;
+}
+
