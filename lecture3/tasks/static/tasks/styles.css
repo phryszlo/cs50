@@ -6,7 +6,7 @@ li {
   font-family: sans-serif;
   font-size: 20px;
   color:lime;
-  list-style-type: lower-roman;
+  list-style-type:  disc;
 
   list-style-position: inside;
   padding-left: 1em;
