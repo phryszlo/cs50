@@ -6,8 +6,8 @@ from django.shortcuts import render
 # tasks = []
 class NewTaskForm(forms.Form):
   task = forms.CharField(label="New Item")
-  priority = forms.IntegerField(label="Priority", \
-    min_value=1, max_value=5)
+  # priority = forms.IntegerField(label="Priority", \
+  #   min_value=1, max_value=5)
 
 def index(request):
   if "tasks" not in request.session:
