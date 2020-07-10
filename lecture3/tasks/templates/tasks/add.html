@@ -1,7 +1,7 @@
 {% extends "tasks/layout.html" %}
 {% block body %}
 <div>
-  <h2>add a new task</h2>
+  <h2>arbitrary list of things</h2>
   <form action="{% url 'tasks:add' %} " method="post">
     {% csrf_token %}
     <table>
@@ -11,7 +11,7 @@
     <input type="submit">
   </form>
   <br />
-  <a href="{% url 'tasks:index' %}">View tasks</a>
+  <a href="{% url 'tasks:index' %}">View list</a>
 </div>
 <div>
   div2
