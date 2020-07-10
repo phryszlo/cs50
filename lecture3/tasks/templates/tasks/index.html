@@ -1,12 +1,12 @@
 {% extends "tasks/layout.html" %}
 {% block body %}  
-<h4 class="tasktitle">the tasks at hand</h4>
+<h4 class="tasktitle">an arbitrary list</h4>
 <div class="container">
   <ul>
     {% for task in tasks %}
     <li>{{task}}</li>
     {% empty %}
-      <li>no tasks here</li>
+    <h5>the list is empty</h5>
     {% endfor %}
   </ul>
 </div>
