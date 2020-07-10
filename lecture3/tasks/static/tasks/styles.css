@@ -3,9 +3,12 @@ ul {
 }
 
 li {
-  font-family: sans-serif;
+  /* font-family: sans-serif;
   font-size: 20px;
-  color:lime;
+  color:lime; */
+  font-style: oblique;
+  font-family: serif;
+  color: yellowgreen;
   list-style-type:  disc;
 
   list-style-position: inside;
