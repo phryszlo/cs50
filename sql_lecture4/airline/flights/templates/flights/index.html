@@ -4,7 +4,7 @@
   <h1>Flights</h1>
   <ul>
     {% for flight in flights %}
-      <li>Flight {{ flight.id }} :  {{ flight.origin }} to {{ flight.destination }}</li>
+      <li class='flighty'><h3>Flight {{ flight.id }}</h3><h4>{{ flight.origin }}</h4> to <h4>{{ flight.destination }}</h4> for <p style="color:aquamarine;">{{ flight.duration }}</p> minutes.</li>
     {% endfor %}
   </ul>
 {% endblock %}

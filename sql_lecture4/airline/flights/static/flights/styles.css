@@ -1,0 +1,81 @@
+ul {
+  margin-left: 2px;
+}
+
+li {
+  /* font-family: sans-serif;
+  font-size: 20px;
+  color:lime; */
+  font-style: oblique;
+  font-family: serif;
+  color: yellowgreen;
+  list-style-type:  none;
+  list-style-position: inside;
+  padding-left: 1em;
+  border-bottom: 1px solid steelblue;
+  width: 28em;
+  margin: 8px;
+}
+
+p {
+  font-style: oblique;
+  font-family: serif;
+  color: yellowgreen;
+}
+
+a:visited {
+  color: lightblue;
+}
+
+div {
+  /* border: solid 1px yellow; */
+  padding: 10px;
+  /* margin: 9px; */
+  text-align: left;
+}
+
+table {
+  text-align: justify;
+  padding: 15px;
+}
+
+td, th {
+  padding: 10px;
+  /* border: solid 1px gray; */
+}
+
+input  {
+  width: 10em;
+  border-radius: .5em;
+}
+
+body {
+  background-color: #281828;
+  display: flex;
+  flex-flow: column wrap;
+  color: whitesmoke;
+}
+
+.tasktitle {
+  margin: 20px;
+}
+
+.addlink {
+  margin: auto;
+}
+
+.flighty {
+  color: blueviolet;
+}
+
+.flighty h4, p {
+  color: yellowgreen;
+  padding: 0px;
+  /* margin: 0px; */
+  margin-top: 5em;
+  display: inline;
+}
+
+.flighty h3 {
+  color: blue;
+}
