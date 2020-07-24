@@ -1,4 +1,5 @@
 {% extends "tasks/layout.html" %}
+
 {% block body %}
 <div>
   <h2>arbitrary list of things</h2>
@@ -14,6 +15,11 @@
   <a href="{% url 'tasks:index' %}">View list</a>
 </div>
 <div>
-  div2
 </div>
-{% endblock %}}
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.onload = document.getElementById("id_task").focus()
+</script>
+{% endblock %}

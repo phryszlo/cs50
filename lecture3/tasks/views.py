@@ -8,6 +8,9 @@ class NewTaskForm(forms.Form):
   task = forms.CharField(label="New Item")
   # priority = forms.IntegerField(label="Priority", \
   #   min_value=1, max_value=5)
+  # def __init__(self):
+  #   print ("initted")
+    # self.fields['task'].attrs.update(autofocus='autofocus')
 
 def index(request):
   if "tasks" not in request.session:

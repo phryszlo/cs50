@@ -1,4 +1,4 @@
-"""lecture3 URL Configuration
+"""airline URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -14,13 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
-from django.views.generic.base import RedirectView
+from django.urls import path, include
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='/tasks')),
     path('admin/', admin.site.urls),
-    path('hello/', include("hello.urls")),
-    path('newyear/', include("newyear.urls")),
-    path('tasks/', include("tasks.urls"))
+    # path("flights/", include("flights.urls")),
+    # path("users/", include("users.urls"))
 ]
