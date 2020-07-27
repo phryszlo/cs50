@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listener</title>
+
+</head>
+
+<body>
+  <h1>[ ]</h1>
+
+  <script>
+
+    const dragH1 = () => {
+      // h1.style.position = 
+    }
+    let h1 = document.querySelector('h1')
+    h1.ondrag = dragH1
+
+    document.onmousemove = findViewCoords // findDocumentCoords
+
+
+
+    //https://nerdparadise.com/programming/javascriptmouseposition
+    function findDocumentCoords(mouseEvent) {
+      var xpos
+      var ypos;
+      if (mouseEvent) {
+        //FireFox
+        xpos = mouseEvent.pageX;
+        ypos = mouseEvent.pageY;
+      }
+      else {
+
+        //IE
+        xpos = window.event.x + document.body.scrollLeft - 2;
+        ypos = window.event.y + document.body.scrollTop - 2;
+      }
+
+      console.log (xpos + ',' + ypos)
+      h1.innerHTML = xpos + ',' + ypos
+    }
+
+    function findViewCoords(mouseEvent) {
+      var xpos;
+      var ypos;
+      if (mouseEvent) {
+        //FireFox
+        xpos = mouseEvent.pageX - document.body.scrollLeft;
+        ypos = mouseEvent.pageY - document.body.scrollTop;
+      }
+      else {
+        //IE
+        xpos = window.event.x + 2;
+        ypos = window.event.y + 2;
+      }
+
+      console.log (xpos + ',' + ypos)
+      h1.innerHTML = xpos + ',' + ypos
+    }
+
+  </script>
+</body>
+
+</html>

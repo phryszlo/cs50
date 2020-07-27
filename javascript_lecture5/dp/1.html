@@ -6,12 +6,44 @@
   <title>Document</title>
 </head>
 <body>
-    <script>
-      let globular = 7
-      if (true) {
-        let dingus = 9
-        console.log(globular)
+  <h1 id='hasid'>id</h1>
+  <h1 class='hasclass'>class</h1>
+  <h2>h21</h2>
+  <h2>h22</h2>
+  <button onclick='callit()'>call function</button>
+  <script>
+    const classy = document.getElementById('hasclass')
+    const idey = document.getElementById('hasid')
+    const h1 = document.querySelector('h1')
+    const h1s = document.querySelectorAll('h1')
+    const h2s = document.querySelectorAll('h2')
+
+    let callit = () => {
+      if (document.body.style.backgroundColor === 'black'){
+        callit2()
+      } else {
+        callit1()
       }
-    </script>
+    }
+    let callit1 = () => {
+      for (let i = 0; i < h1s.length; i++) {
+        h1s[i].style.color = 'blue'
+      }
+      for (let i = 0; i < h2s.length; i++) {
+        h2s[i].style.color = 'green'
+      }
+      document.body.style.backgroundColor = 'black'
+    }
+
+    let callit2 = () => {
+      for (let i = 0; i < h1s.length; i++) {
+        h1s[i].style.color = 'black'
+      }
+      for (let i = 0; i < h2s.length; i++) {
+        h2s[i].style.color = 'black'
+      }
+      document.body.style.backgroundColor = 'white'
+    }
+  </script>
 </body>
 </html>
