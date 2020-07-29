@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>currency</title>
+  <style>
+    div {
+      padding: 10px;
+      color: green;
+    }
+    body {
+      margin: 20px;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      document.querySelector('form').onsubmit = () => {
+        const currency = document.querySelector('#currency').value.toUpperCase()
+
+        fetch('https://api.exchangeratesapi.io/latest?base=USD')
+          .then(response => response.json()) //{
+          //   return response.json()
+          // })
+          .then(data => {
+            const rate = data.rates[currency]
+            if (rate !== undefined) {
+              document.querySelector('#result').innerHTML
+                  = `1 USD is equal to ${rate.toFixed(3)} ${currency}`
+            } else {
+              document.querySelector('#result').innerHTML
+                  = '<h4 style="color:red;">Invalid currency you said there</h4>'
+            }
+          })
+          .catch(error => {
+            document.querySelector('#result').value = '<h6>Error!:</h6> ' + error
+          })
+
+          document.querySelector('#currency').value = ''
+
+          //no submits!
+          return false
+      }
+    })
+  </script>
+</head>
+
+<body>
+  <form>
+    <input type="text" placeholder="currency" id="currency" autofocus>
+    <input type="submit" value="convert">
+    <div id="result"></div>
+  </form>
+</body>
+
+</html>

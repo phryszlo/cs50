@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      //disable submit button by default
+      document.querySelector('#submit').disabled = true
+
+      document.querySelector('#task').onkeyup = (event) => {
+        // disable the submit button unless the button was 'clicked' by hitting Enter
+        if (document.querySelector('#task').value.length > 0) {
+          document.querySelector('#submit').disabled = false
+        } else {
+          document.querySelector('#submit').disabled = true
+        }
+        console.log(event)
+        event.preventDefault()
+      }
+
+      document.querySelector('form').onsubmit = () => {
+        const taskinput = document.querySelector('#task')
+        const task = taskinput.value
+        console.log(task)
+
+        const li = document.createElement('li')
+        li.innerHTML = task
+
+        //why not appendChild?
+        document.querySelector('#tasks').append(li)
+
+        taskinput.value = ''
+
+        document.querySelector('#submit').disabled = true
+
+        taskinput.focus()
+
+        //prevent default? stop form submission anyway
+        return false
+      }
+
+    })
+  </script>
+</head>
+<body>
+  <h1>Tasks</h1>
+  <ul id="tasks">
+
+  </ul>
+  <form>
+    <input id="task" placeholder="task" autofocus>
+    <input type="submit" id='submit'>
+  </form>
+</body>
+</html>

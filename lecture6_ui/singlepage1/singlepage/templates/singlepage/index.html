@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>singlepage</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
+  <style>
+    body {
+      background-color: #2244aa;
+    }
+
+    img {
+      width: 80vw;
+      object-fit: fill;
+      border: 15px #881155 inset;
+    }
+
+    #content {
+      /* text-align: center; */
+      margin: 3em 0 0 0;
+    }
+
+    #container {
+      text-align: center;
+      margin: auto;
+      /* width: 80vw; */
+      /* border: dotted 1px red; */
+    }
+
+    #buttons {
+      text-align: left;
+    }
+  </style>
+  <script>
+
+    window.onscroll = () => {
+      if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
+        document.querySelector('body').style.background = 'green'
+      }
+      else{
+        document.querySelector('body').style.background = '#2244aa'
+      }
+    }
+    window.onpopstate = function(event) {
+      console.log(event.state.section)
+      showSection(event.state.section)
+    }
+    function showSection(section) {
+      fetch(`/sections/${section}`)
+        .then(response => response.blob())
+        .then(function (myBlob) {
+          var objectURL = URL.createObjectURL(myBlob);
+          myImage.src = objectURL;
+          // testing.innerHTML = 'testing div'
+        });
+      //   .then(text => {
+      //     //console.log(text)
+      //     document.querySelector('#content').innerHTML = text
+      //   })
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      showSection(1)
+      document.querySelectorAll('button').forEach(button => {
+        button.onclick = function () {
+          const section = this.dataset.section
+          history.pushState({section: section}, "", `section${section}`)
+          showSection(section)
+        }
+      })
+    })
+
+  </script>
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div id='buttons'>
+      <button data-section="1">image 1</button>
+      <button data-section="2">image 2</button>
+      <button data-section="3">image 3</button>
+    </div>
+    <div id='testing'></div>
+    <div id='content'>
+      <img id='myImage' alt='no image'>
+    </div>
+  </div>
+</body>
+
+</html>

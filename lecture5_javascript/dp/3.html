@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOMLoaded v PageLoaded</title>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", theDomHasLoaded, false);
+    window.addEventListener("load", pageFullyLoaded, false);
+
+    function theDomHasLoaded(e) {
+      document.querySelector('h6').innerHTML = 'dom'
+    }
+
+    function pageFullyLoaded(e) {
+      document.querySelector('p').innerHTML = 'pg'
+    }
+
+  </script>
+</head>
+
+<body>
+  <p>[ ]</p>
+  <h6>{}</h6>
+</body>
+
+</html>

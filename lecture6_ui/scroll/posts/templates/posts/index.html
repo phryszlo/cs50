@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posties</title>
+  <style>
+    .post {
+      height: 100px;
+      background-color: blue;
+      color: fuchsia;
+      margin: 8px;
+    }
+  </style>
+  <script>
+    
+    window.onscroll = () => {
+      if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
+        document.querySelector('body').style.background = 'green'
+        load()
+      }
+      else{
+        document.querySelector('body').style.background = 'gold'
+      }
+    }
+
+
+    let counter = 1
+
+    const quantity = 30
+
+    document.addEventListener('DOMContentLoaded', load)
+
+    function load() {
+      const start = counter
+      const end = start + quantity - 1
+      counter = end + 1
+
+      //get new posts and add posts
+      fetch(`/posts?start=${start}&end=${end}`)
+      .then(response => response.json())
+      .then(data => {
+        data.posts.forEach(add_post)
+      })
+    }
+
+    function add_post(contents) {
+      const post = document.createElement('div')
+      post.className = 'post'
+      post.innerHTML = contents
+
+      document.querySelector('#posts').append(post)
+    }
+  </script>
+</head>
+<body>
+  <div id="posts"></div>
+</body>
+</html>
