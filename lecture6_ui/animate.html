@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>anime</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    @keyframes grow {
+      0% {
+        font-size: 60px;
+        left: 0%;
+        top: 20%;
+      }
+
+      30% {
+        color: blueviolet;
+      }
+
+      60% {
+        font-size: 10px;
+        left: 20%;
+        top: 20%;
+      }
+
+      100% {
+        font-size: 60px;
+        left: 0%;
+        top: 20%;
+        color:gainsboro;
+      }
+    }
+
+    h1 {
+      position: relative;
+      animation-name: grow;
+      animation-duration: 4s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+    }
+
+    #play {
+      margin: 0 0 0 20px;
+      z-index: 100;
+      position: relative;
+    }
+
+    #animationframe {
+      height: 30vh;
+      width: 80vw;
+      /* border: solid white 1px; */
+    }
+
+    body {
+      background: cadetblue;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const h1 = document.querySelector('h1')
+      h1.style.animationPlayState = 'paused'
+
+      document.querySelector('#play').onclick = () => {
+        if (h1.style.animationPlayState === 'paused') {
+          h1.style.animationPlayState = 'running'
+        } else {
+          h1.style.animationPlayState = 'paused'
+        }
+      }
+    })
+  </script>
+</head>
+
+<body>
+  <div id='animationframe'>
+    <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi doloremque quis enim et nulla consequuntur obcaecati alias eos temporibus error, impedit aliquam dolor sequi recusandae ipsam ipsum fugiat? Corrupti, aperiam.</h1>
+  </div>
+  <button id='play'>play / pause</button>
+</body>
+
+</html>

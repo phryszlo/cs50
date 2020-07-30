@@ -5,11 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Posties</title>
   <style>
+    @keyframes hide {
+      0% {
+        opacity: 1;
+        left: 0;
+        line-height: 100%;
+      }
+      70% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+        left: 1000px;
+        height: 0px;
+        line-height: 0px;;
+      }
+    }
     .post {
+      position:relative;
+      display: flex;
+      text-justify: initial;
+      align-items: center;
+      justify-content: space-between;
       height: 100px;
       background-color: blue;
       color: fuchsia;
       margin: 8px;
+      vertical-align: middle;
+      animation-name: hide;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-play-state: paused;
+    }
+    .hide {
+      height: 3em;
+      width: 6em;
+      margin: 0 5em 0 0;
+      /* float: right; */
+    }
+    .postcontent {
+      margin: 0 0 0 2.5em;
+      color: greenyellow;
+      font-size: 1.5em;
     }
   </style>
   <script>
@@ -31,6 +68,16 @@
 
     document.addEventListener('DOMContentLoaded', load)
 
+    document.addEventListener('click', event => {
+      const element = event.target;
+      if (element.className === 'hide') {
+        element.parentElement.style.animationPlayState = 'running';
+        element.parentElement.addEventListener('animationend', () => {
+          element.parentElement.remove();
+        })
+      }
+    })
+
     function load() {
       const start = counter
       const end = start + quantity - 1
@@ -47,7 +94,7 @@
     function add_post(contents) {
       const post = document.createElement('div')
       post.className = 'post'
-      post.innerHTML = contents
+      post.innerHTML = `<p class="postcontent">${contents}</p> <button class="hide">Hide</button>`
 
       document.querySelector('#posts').append(post)
     }
