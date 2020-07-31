@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reactionary</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background: #3365e0;
+      color: white;
+    }
+    #winner {
+      font-size: 86px;
+      color: gold;
+    }
+    #gameplay {
+      padding: 18px 0 0 0;
+      font-size: 40px;
+    }
+  </style>
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/babel">
+
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          count: 10,
+          toast: 'plain',
+          score: 0,
+          num1: 1,
+          num2: 1,
+          answer: "",
+          wrongCount: 0,
+          gameOver: false,
+          winScore: 3,
+          loseScore: 3
+        }
+      }
+
+
+
+      render() {
+        var spacerStyle = {
+          height: '100px'
+        }
+        var marginStyle = {
+          margin: '30px 0 0 30px'
+        }
+        var gameStyle = {
+          color: 'yellow'
+        }
+        var winStyle = {
+          color: 'limegreen',
+          display: 'inline-block',
+          margin: '0 0 0 5px',
+          background: 'black',
+          width: '60px',
+          textAlign: 'center'
+        }
+        var loseStyle = {
+          color: 'orangered',
+          display: 'inline-block',
+          margin: '0 0 0 5px',
+          background: 'black',
+          width: '60px',
+          textAlign: 'center'
+        }
+        var gapStyle = {
+          margin: '0 0 0 18px',
+          display: 'inline-block'
+        }
+        var containerStyle = {
+          width: '60vw',
+          boxShadow: '0px 0px 25px 0px #333',
+          padding: '10px'
+        }
+
+        if (this.state.score === this.state.winScore){
+          return (
+            <div id="winner">
+              Y'all win!
+            </div>
+          )
+        }
+
+        if (this.state.wrongCount === this.state.loseScore){
+          document.body.background = 'fuschia'
+          return (
+            <div id="loser">
+              Y'all lost!
+            </div>
+          )
+        }
+        
+
+        return (
+          <div style={marginStyle}>
+            <h3 style={gameStyle}>game:</h3>
+
+            <div style={containerStyle}>
+              <p style={gapStyle}>the score is currently</p>
+              <p style={winStyle}>{this.state.score}</p>
+              <p style={gapStyle}>wrong answers </p>
+              <p style={loseStyle}>{this.state.wrongCount}</p>
+            </div>
+
+            <div id="gameplay">{this.state.num1} + {this.state.num2}</div>
+            <input onKeyPress={this.inputKeyPress} onChange={this.updateResponse} value={this.state.answer} id="answer"></input>
+            <div>your answer, then, is {this.state.answer}?</div>
+
+
+
+            <div style={spacerStyle}></div>
+            <h2>{this.state.count}</h2>
+            <h2>the toast is currently {this.state.toast}</h2>
+            <button onClick={this.count}>Count!</button>
+            <button onClick={this.butter}>Butter the toast</button>
+          </div>
+        )
+      }
+
+      count = () => {
+        this.setState(state => ({
+          count: state.count + 1
+        }))
+      }
+
+      butter = () => {
+        this.setState(state => ({
+          toast: 'buttered'
+        }))
+      }
+
+      updateResponse = (event) => {
+        this.setState({
+          answer: event.target.value
+        })
+      }
+
+      inputKeyPress = (event) => {
+        if (event.key === 'Enter') {
+          if (parseInt(this.state.answer) === this.state.num1 + this.state.num2) {
+            this.setState(state => ({
+              score: state.score + 1,
+              num1: Math.ceil(Math.random() * 10),
+              num2: Math.ceil(Math.random() * 10),
+              answer: ''
+            }))
+          } else {
+            this.setState(state => ({
+              wrongCount: state.wrongCount + 1
+            }))
+          }
+        }
+      }
+
+    }
+
+    ReactDOM.render(<App />, document.querySelector('#app'))
+  </script>
+</body>
+
+</html>
